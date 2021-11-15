@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>ECO-SASTRERIA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
+  <link href="HojaEstilo.css" rel="stylesheet" />  
+  <script src="../Recursos/js/jquery.min.js"></script>
+  <script src="../Recursos/js/bootstrap.min.js"></script>
+   
+</head>
+<body id="PaginaWebEcoSatreria" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#PaginaWebEcoSatreria"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="PaginaPrincipal.html">INICIO</a></li>
+        <li><a href="#Productos">PrODUCTOS</a></li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+    <h1>ECO SASTRERÍA</h1>      
+  </div>
+  
+ <div id="Cuenta" class="container-fluid bg-grey">
+    <h2 class="text-center">PRODUCTOS ECO SASTRERÍA</h2>
+    <form action="/Contacto/Contacto" enctype="multipart/form-data" method="post"><input name="__RequestVerificationToken" type="hidden" value="F6mSyoU6vujxpWY2BRItZrQdH4tX7pvSAS0Vv8Z72bpvHpuVdA-zoyhHWFwKygfT0V1_De_bJssXo02S0lWAZ05OqE6-xPfPiXv318MgTzM1" />        
+          
+      <div class="form-row">  
+        <div class="form-group col-md-6">
+            <label class="control-label" for="IdPedido">Id Producto *</label> 
+            <input id="IdProducto" name="IdProducto" type="text" class="form-control" required placeholder="IdProducto">                                             
+      </div>
+        
+      <div class="form-group col-md-6">
+        <label class="control-label" for="Nombre">Nombre Producto *</label> 
+        <input id="NombreProducto" name="NombreProducto" type="text" class="form-control" required placeholder="NombreProducto">                                             
+      </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label" for="TipoProducto">Tipo de producto</label>
+            <select class="form-control" data-val="true" required id="TipoProducto" name="TipoProducto"><option value="">Seleccione</option>
+                <option value="TM">TM - Traje Masculino </option>
+                <option value="TF">TF - Traje Femenino</option>                                                                         
+            </select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="TipoProducto" data-valmsg-replace="true"></span>
+        </div>   
+        
+        <div class="form-group col-md-6">
+            <label class="control-label" for="Estado">Estado *</label>
+            <select class="form-control" data-val="true" required id="Estado" name="Estado"><option value="">Seleccione</option>
+                <option value="0">Sin Stock</option>
+                <option value="1">Con Stock</option>                                
+           </select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="Estado" data-valmsg-replace="true"></span>
+        </div>  
+                                
+        <div class="form-group col-md-6">
+            <label class="control-label" for="Talla">Talla *</label>
+            <select class="form-control" data-val="true" required id="Talla" name="Talla"><option value="">Seleccione</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="O">Otro</option>
+            </select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="Talla" data-valmsg-replace="true"></span>
+        </div>                               
+    
+        
+        
+        <div class="form-group col-md-6">
+          <label class="control-label" for="Precio">Precio *</label>
+          <input id="Precio" name="Precio" type="text" class="form-control" required placeholder="Precio">           
+         </select>
+          <span class="field-validation-valid text-danger" data-valmsg-for="Precio" data-valmsg-replace="true"></span>
+      </div> 
+
+        <div id="descripcionRow" class="form-row">
+        <div class="form-group col-md-6">
+            <label class="control-label" for="descripcion">Comentarios adicionales *</label>
+            <textarea class="form-control" cols="40" data-val="true" data-val-length="longitud máxima de 200 caracteres" data-val-length-max="200" id="descripcion" name="descripcion" placeholder="Descripción" rows="7" required>
+            </textarea>
+            <span class="field-validation-valid text-danger" data-valmsg-for="descripcion" data-valmsg-replace="true"></span>
+        </div>
+        </div>                              
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Agregar</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Modificar</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Eliminar</button>
+            </div>
+        </div>
+
+     </div>
+
+    </form>     
+</div>
+
+
+
+<footer class="container-fluid text-center">
+    <a href="#PaginaWebEcoSatreria" title="To Top">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <p>2021 DEV_MASTERS</p>
+</footer>
+  
+<script>
+  $(document).ready(function(){
+    // Add smooth scrolling to all links in navbar + footer link
+    $(".navbar a, footer a[href='#PaginaWebEcoSatreria']").on('click', function(event) {
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+  
+        // Store hash
+        var hash = this.hash;
+  
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function(){
+     
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+    
+    $(window).scroll(function() {
+      $(".slideanim").each(function(){
+        var pos = $(this).offset().top;
+  
+        var winTop = $(window).scrollTop();
+          if (pos < winTop + 600) {
+            $(this).addClass("slide");
+          }
+      });
+    });
+  })
+</script>
+
+</body>
+</html>
