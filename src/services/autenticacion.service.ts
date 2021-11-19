@@ -44,7 +44,7 @@ export class AutenticacionService {
     },
     llaves.claveJwt);
     return token;
-    
+
   }
   validarToken(token : string){
     try {
@@ -54,5 +54,17 @@ export class AutenticacionService {
       return false;
     }
   }
-  
+  cambiarContrasena(Usr:string){
+    try {
+      let usuario = this.usuarioRepositorio.findOne({where: {correo:Usr }});
+      if(usuario){
+        return usuario;
+      }else{
+        return false;
+      }
+    } catch (error) {
+      return false
+    }
+  }
+
 }

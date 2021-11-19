@@ -17,8 +17,9 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Rol, Usuario} from '../models';
+import {Credenciales, Rol, Usuario} from '../models';
 import {RolRepository, UsuarioRepository} from '../repositories';
 import { AutenticacionService } from '../services';
 import {llaves} from '../config/llaves'
@@ -34,7 +35,51 @@ export class UsuarioController {
     @service(AutenticacionService)
     public servicioAutentificacion : AutenticacionService
   ) {}
+  //Cambiar contraseña
+  @put('/cambiarComtrasena')
+  @response(200,{
+    description: "Cambiar una contraseña"
+  })
+  async cambiarContrasena(@requestBody() credenciales : Credenciales){
+    let usr = await this.servicioAutentificacion.cambiarContrasena(credenciales.usuario);
+    if(usr){
+      let nuevaContrasena = this.servicioAutentificacion.generarClave();
+      let nuevaContrasenaCifrada = this.servicioAutentificacion.cifradoClave(nuevaContrasena);
 
+      let usuarioActualizado = await this.usuarioRepository.updateById(usr.id,{contrasena: nuevaContrasenaCifrada});
+      //notificación
+      let destino = usr.correo;
+      let asunto = 'Registro Eco-Sastreria';
+      let contenido = `Hola ${usr.nombre}, su contraseña ahora es ${nuevaContrasena} y su rol es: ${usr.rolId}.`
+      fetch(`${llaves.urlServiciosNotificaciones}/envio-correo?destino=${destino}&asunto=${asunto}&contenido=${contenido}`).then((data:any)=>{
+      console.log(data);
+      return usuarioActualizado;
+    });
+    }else{
+      throw new HttpErrors['401']("Usuario no existe")
+    }
+  }
+  @post('/identificarUsuario')
+  @response(200,{
+    description: "Identificar a un usuario con su rol"
+  })
+  async identificarUsuario(@requestBody() credenciales : Credenciales){
+    let usr = await this.servicioAutentificacion.identificarUsuario(credenciales.usuario, credenciales.contrasena);
+    if (usr){
+      let token = this.servicioAutentificacion.generarTokenJw(usr);
+      return{
+        datos : {
+          nombre: usr.nombre,
+          correo: usr.correo,
+          id : usr.id,
+          rol: usr.rolId
+        },
+        tk: token
+      }
+    }else{
+      throw new HttpErrors['401']("Datos incorrectos")
+    }
+  }
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',
@@ -65,7 +110,7 @@ export class UsuarioController {
       let nuevoRol= await this.rolRepositorio.create({nombre: 'cliente'})
       usuario.rolId = `${nuevoRol.id}`
     }
-    let Usr= await this.usuarioRepository.create(usuario); 
+    let Usr= await this.usuarioRepository.create(usuario);
     //Notificación Usuario
     let destino = usuario.correo;
     let asunto = 'Registro Eco-Sastreria';
@@ -75,7 +120,7 @@ export class UsuarioController {
       console.log(data);
     });
     return usuario;
-    
+
   }
 
   @get('/usuarios/count')
