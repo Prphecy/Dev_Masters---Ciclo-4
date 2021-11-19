@@ -35,7 +35,9 @@ export class UsuarioController {
     @service(AutenticacionService)
     public servicioAutentificacion : AutenticacionService
   ) {}
+
   //Cambiar contraseña
+
   @put('/cambiarComtrasena')
   @response(200,{
     description: "Cambiar una contraseña"
@@ -59,6 +61,9 @@ export class UsuarioController {
       throw new HttpErrors['401']("Usuario no existe")
     }
   }
+
+  //identificación de usuario
+
   @post('/identificarUsuario')
   @response(200,{
     description: "Identificar a un usuario con su rol"
@@ -80,6 +85,7 @@ export class UsuarioController {
       throw new HttpErrors['401']("Datos incorrectos")
     }
   }
+  
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',
