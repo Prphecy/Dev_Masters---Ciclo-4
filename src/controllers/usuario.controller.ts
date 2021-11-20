@@ -109,18 +109,20 @@ export class UsuarioController {
     let claceCifrada = this.servicioAutentificacion.cifradoClave(clave);
     usuario.contrasena = claceCifrada;
     //Esta ruta solo tendra el rol de cliente
-    let rol = await this.rolRepositorio.findOne({where: {nombre : 'cliente'}});
+    let rol = await this.servicioAutentificacion.ValidarRol('cliente')
     if(rol){
       usuario.rolId = `${rol.id}`
+      usuario.nombreROl= rol.nombre
     }else{
-      let nuevoRol= await this.rolRepositorio.create({nombre: 'cliente'})
+      let nuevoRol= await this.rolRepositorio.create({nombre: `${'cliente'}`})
       usuario.rolId = `${nuevoRol.id}`
+      usuario.nombreROl= nuevoRol.nombre
     }
     let Usr= await this.usuarioRepository.create(usuario);
     //Notificación Usuario
     let destino = usuario.correo;
     let asunto = 'Registro Eco-Sastreria';
-    let contenido = `Hola ${usuario.nombre}, su usuario es: ${usuario.correo}, su contraseña es: ${clave} y su rol es: ${usuario.rolId}.
+    let contenido = `Hola ${usuario.nombre}, su usuario es: ${usuario.correo}, su contraseña es: ${clave} y su rol es: ${usuario.nombreROl}.
     Bienvenido a eco-satreria`
     fetch(`${llaves.urlServiciosNotificaciones}/envio-correo?destino=${destino}&asunto=${asunto}&contenido=${contenido}`).then((data:any)=>{
       console.log(data);
