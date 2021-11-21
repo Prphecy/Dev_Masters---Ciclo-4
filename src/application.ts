@@ -9,6 +9,10 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import { AdminStrategy } from './strategies/admin.strategies';
+import { AuthenticationComponent, registerAuthenticationStrategy } from '@loopback/authentication';
+import { ClientStrategy } from './strategies/client.strategies';
+import { EmployeeStrategy } from './strategies/employ.strategies';
 
 export {ApplicationConfig};
 
@@ -40,5 +44,9 @@ export class EcoSastreriaApplication extends BootMixin(
         nested: true,
       },
     };
+registerAuthenticationStrategy(this, AdminStrategy);
+registerAuthenticationStrategy(this, ClientStrategy);
+registerAuthenticationStrategy(this, EmployeeStrategy);
+this.component(AuthenticationComponent);
   }
 }
