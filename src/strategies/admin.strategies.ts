@@ -1,34 +1,40 @@
-import { AuthenticationStrategy } from "@loopback/authentication";
-import { service } from "@loopback/core";
-import { HttpErrors, Request } from "@loopback/rest";
+import {AuthenticationStrategy} from '@loopback/authentication';
+import {service} from '@loopback/core';
+import {HttpErrors, Request} from '@loopback/rest';
 import {UserProfile} from '@loopback/Security';
-import parseBearerToken from "parse-bearer-token";
-import { AutenticacionService } from "../services";
+import parseBearerToken from 'parse-bearer-token';
+import {Usuario} from '../models';
+import {AutenticacionService} from '../services';
 
-export class AdminStrategy implements AuthenticationStrategy{
-    name: string = 'admin';
+export class AdminStrategy implements AuthenticationStrategy {
+  name: string = 'admin';
 
-constructor(
+  constructor(
     @service(AutenticacionService)
-    public servicioAutenticacion: AutenticacionService
-){
+    public servicioAutenticacion: AutenticacionService,
+  ) {}
 
-}
+  async authenticate(request: Request): Promise<UserProfile | undefined> {
+    let token = parseBearerToken(request);
+    if (token) {
+      let datos = this.servicioAutenticacion.validarToken(token);
+      if (datos) {
+        if (datos.data.rol === '619889758db3da310c6db1c2'){
+            let perfil: UserProfile = Object.assign({
+                nombre: datos.data.nombre,
+                correo: datos.data.correo,
+                id: datos.data.id
+              });
+            return perfil;
+        }else{
+            throw new HttpErrors[401]('Este usuario no tiene permisos para esta acción');
+        }
 
-    async authenticate(request: Request): Promise<UserProfile | undefined>{
-        let token = parseBearerToken(request); 
-            if(token){
-                let datos = this.servicioAutenticacion.validarToken(token);
-                    if(datos){
-                        let perfil: UserProfile = Object.assign({
-                            nombre: datos.data.usuario
-                        });
-                        return perfil;
-                    }else{
-                        throw new HttpErrors[401]("El token incluido no es valido.")
-                    }
-            }else{
-                throw new HttpErrors[401]("No se ha incluido un token en la solicitud.")
-            }
+      } else {
+        throw new HttpErrors[401]('El token incluido no es valido.');
+      }
+    } else {
+      throw new HttpErrors[401]('No se ha incluido un token en la solicitud.');
     }
+  }
 }

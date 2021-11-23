@@ -6,7 +6,7 @@ import parseBearerToken from "parse-bearer-token";
 import { AutenticacionService } from "../services";
 
 export class ClientStrategy implements AuthenticationStrategy{
-    name: string = 'client';
+    name: string = 'cliente';
 
 constructor(
     @service(AutenticacionService)
@@ -16,14 +16,21 @@ constructor(
 }
 
     async authenticate(request: Request): Promise<UserProfile | undefined>{
-        let token = parseBearerToken(request); 
+        let token = parseBearerToken(request);
             if(token){
                 let datos = this.servicioAutenticacion.validarToken(token);
                     if(datos){
-                        let perfil: UserProfile = Object.assign({
-                            nombre: datos.data.usuario
-                        });
-                        return perfil;
+                        if(datos.data.rol==='6196d4c5f87ca32fac994dfa'){
+                            let perfil: UserProfile = Object.assign({
+                                nombre: datos.data.nombre,
+                                correo: datos.data.correo,
+                                id: datos.data.id
+                            });
+                            return perfil;
+                        }else{
+                            throw new HttpErrors[401]("Este usuario no tiene permisos para esta acción")
+                        }
+
                     }else{
                         throw new HttpErrors[401]("El token incluido no es valido.")
                     }

@@ -19,6 +19,7 @@ import {RolRepository, UsuarioRepository} from '../repositories';
 import { AutenticacionService } from '../services';
 import {llaves} from '../config/llaves'
 import { promises } from 'dns';
+import {authenticate} from '@loopback/authentication';
 const fetch = require('node-fetch');
 
 export class UsuarioRolController {
@@ -30,6 +31,7 @@ export class UsuarioRolController {
     @service(AutenticacionService)
     public servicioAutentificacion : AutenticacionService
   ) {}
+  @authenticate("admin")
   @post('/usuarios/roles')
   @response(200, {
     description: 'Usuario model instance',
@@ -48,7 +50,6 @@ export class UsuarioRolController {
     })
     usuario: Omit<Usuario, 'id'>
   ): Promise<Usuario> {
-
     //asignar contraseña
     let clave = this.servicioAutentificacion.generarClave();
     let claceCifrada = this.servicioAutentificacion.cifradoClave(clave);

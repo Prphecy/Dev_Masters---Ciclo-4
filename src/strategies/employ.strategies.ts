@@ -16,14 +16,21 @@ constructor(
 }
 
     async authenticate(request: Request): Promise<UserProfile | undefined>{
-        let token = parseBearerToken(request); 
+        let token = parseBearerToken(request);
             if(token){
                 let datos = this.servicioAutenticacion.validarToken(token);
                     if(datos){
-                        let perfil: UserProfile = Object.assign({
-                            nombre: datos.data.usuario
-                        });
-                        return perfil;
+                        if(datos.data.rol=== '61988a4be16c2037c8dc3340'){
+                            let perfil: UserProfile = Object.assign({
+                                nombre: datos.data.nombre,
+                                correo: datos.data.correo,
+                                id: datos.data.id
+                            });
+                            return perfil;
+                        }
+                        else{
+                            throw new HttpErrors[401]("Este usuario no tiene permisos para esta acción")
+                        }
                     }else{
                         throw new HttpErrors[401]("El token incluido no es valido.")
                     }

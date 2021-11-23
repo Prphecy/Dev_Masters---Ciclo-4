@@ -41,7 +41,8 @@ export class AutenticacionService {
         id: usuario.id,
         correro: usuario.correo,
         nombre : usuario.nombre,
-        rol : usuario.rolId
+        rol : usuario.rolId,
+        nombreRol: usuario.nombreROl
       },
     },
     llaves.claveJwt);
@@ -79,7 +80,7 @@ export class AutenticacionService {
     } catch (error) {
       return false
     }
-    
+
     }
   }
 
