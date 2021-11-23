@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import { service } from '@loopback/core';
 import {
   Count,
@@ -22,13 +23,13 @@ import {
 import {Rol} from '../models';
 import {RolRepository} from '../repositories';
 
-
+@authenticate('admin')
 export class RolController {
   constructor(
     @repository(RolRepository)
     public rolRepository : RolRepository,
   ) {}
-  
+
   @post('/rols')
   @response(200, {
     description: 'Rol model instance',

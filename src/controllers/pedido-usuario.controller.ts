@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   repository,
 } from '@loopback/repository';
@@ -11,7 +12,7 @@ import {
   Usuario,
 } from '../models';
 import {PedidoRepository} from '../repositories';
-
+@authenticate('admin')
 export class PedidoUsuarioController {
   constructor(
     @repository(PedidoRepository)

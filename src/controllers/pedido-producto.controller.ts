@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -25,7 +26,6 @@ export class PedidoProductoController {
   constructor(
     @repository(PedidoRepository) protected pedidoRepository: PedidoRepository,
   ) { }
-
   @get('/pedidos/{id}/producto', {
     responses: {
       '200': {

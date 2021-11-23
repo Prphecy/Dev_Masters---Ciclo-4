@@ -94,7 +94,7 @@ export class PedidoController {
   ): Promise<Count> {
     return this.pedidoRepository.updateAll(pedido, where);
   }
-
+  
   @get('/pedidos/{id}')
   @response(200, {
     description: 'Pedido model instance',

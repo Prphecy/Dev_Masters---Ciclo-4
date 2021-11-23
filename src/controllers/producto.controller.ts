@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -25,7 +26,7 @@ export class ProductoController {
     @repository(ProductoRepository)
     public productoRepository : ProductoRepository,
   ) {}
-
+  @authenticate('employ')
   @post('/productos')
   @response(200, {
     description: 'Producto model instance',
@@ -75,7 +76,7 @@ export class ProductoController {
   ): Promise<Producto[]> {
     return this.productoRepository.find(filter);
   }
-
+ @authenticate('employ')
   @patch('/productos')
   @response(200, {
     description: 'Producto PATCH success count',
@@ -110,7 +111,7 @@ export class ProductoController {
   ): Promise<Producto> {
     return this.productoRepository.findById(id, filter);
   }
-
+ @authenticate('emply')
   @patch('/productos/{id}')
   @response(204, {
     description: 'Producto PATCH success',
@@ -128,7 +129,7 @@ export class ProductoController {
   ): Promise<void> {
     await this.productoRepository.updateById(id, producto);
   }
-
+  @authenticate('employ')
   @put('/productos/{id}')
   @response(204, {
     description: 'Producto PUT success',
@@ -139,7 +140,7 @@ export class ProductoController {
   ): Promise<void> {
     await this.productoRepository.replaceById(id, producto);
   }
-
+  @authenticate('employ')
   @del('/productos/{id}')
   @response(204, {
     description: 'Producto DELETE success',
