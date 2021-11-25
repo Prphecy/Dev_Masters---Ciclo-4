@@ -23,12 +23,12 @@ export class Pedido extends Entity {
 
   @property({
     type: 'boolean',
-    required: true,
+    required: false,
   })
   confirmacionPedido: boolean;
   @property({
     type: 'boolean',
-    required: true,
+    required: false,
   })
   estado: boolean;
 

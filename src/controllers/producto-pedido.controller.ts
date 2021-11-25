@@ -16,12 +16,13 @@ import {
   post,
   requestBody,
 } from '@loopback/rest';
+import { PedidoController } from '.';
 import {
   Producto,
   Pedido,
 } from '../models';
 import {ProductoRepository} from '../repositories';
-@authenticate('cliente')
+//@authenticate('cliente')
 export class ProductoPedidoController {
   constructor(
     @repository(ProductoRepository) protected productoRepository: ProductoRepository,
@@ -70,6 +71,8 @@ export class ProductoPedidoController {
   ): Promise<Pedido> {
     let ProductoEncontrado = await this.productoRepository.findById(id);
     pedido.total= pedido.cantidad * ProductoEncontrado.precio;
+    pedido.confirmacionPedido= false;
+    pedido.estado= false;
     let pedidoguardado =await this.productoRepository.pedido(id).create(pedido);
     await this.productoRepository.updateById(id, {pedidoId : pedidoguardado.id}) ;
     return pedidoguardado;
