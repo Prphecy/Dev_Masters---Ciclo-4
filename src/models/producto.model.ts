@@ -1,4 +1,4 @@
-import {Entity, model, property, hasOne} from '@loopback/repository';
+import {Entity, hasOne, model, property} from '@loopback/repository';
 import {Pedido} from './pedido.model';
 
 @model()
@@ -38,7 +38,11 @@ export class Producto extends Entity {
     required: true,
   })
   descriocion: string;
-
+  @property({
+    type:'string',
+    required: true,
+  })
+  img: string;
   @property({
     type: 'string',
   })
