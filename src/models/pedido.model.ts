@@ -21,6 +21,12 @@ export class Pedido extends Entity {
   })
   cantidad: number;
 
+  @property({
+    type: 'boolean',
+    required: true,
+  })
+  estado: boolean;
+
   @belongsTo(() => Usuario)
   usuarioId: string;
 
