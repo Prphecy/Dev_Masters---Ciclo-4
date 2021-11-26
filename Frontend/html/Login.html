@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ECO-SASTRERIA</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
+    <link href="../Recursos/css/HojaEstilo.css" rel="stylesheet" />  
+    <script src="../Recursos/js/jquery.min.js"></script>
+    <script src="../Recursos/js/bootstrap.min.js"></script>  
+    <link rel="stylesheet" href="../Recursos/css/">
+    
+</head>
+
+<body id="PaginaWebEcoSatreria" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+         <a class="navbar-brand" href="#PaginaWebEcoSatreria"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="../html/index.html">INICIO</a></li>
+        <li><a href="#InicioSesion">INICIO SESIÓN</a></li>           
+        </ul>
+    </div>
+    </div>
+</nav>
+    
+<div class="jumbotron text-center">
+    <h1>ECO SASTRERÍA</h1>      
+</div>
+
+      <!--LOGIN-->
+      
+      <div id="Login" class="container-fluid bg-grey">
+        <h2 class="text-center">INICIO SESIÓN</h2> 
+
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+              <label for="txtUsuario" class="form-label">Usuario *</label>
+              <input type="text" class="form-control" id="txtUsuario" value="" required>
+              <div class="invalid-feedback">                
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="txtContraseña" class="form-label">Contraseña *</label>
+              <input type="text" class="form-control" id="txtContraseña" value="" required>
+              <div class="invalid-feedback">                
+              </div>
+            </div> 
+   
+            <!--Recaptcha-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="pwd">Captcha *</label>   
+                    <div class="captcha-input">
+                        <input type="text" class="form-control" id="captcha-input" required autocomplete="off" placeholder="Ingrese el código captcha">
+                        <span id="errCaptcha"></span>
+                    </div>
+                    <div class="captcha-code">
+                        <div class="code">
+                            <div class="dynamic-code"></div>
+                        </div>
+                        <div class="captcha-reload">
+                            <i class="ion-ios-loop-strong"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---->
+                                                  
+            <div class="col-md-6">
+                <p>¿Aún no tienes cuenta? <a href="../html/Registro.html" class="link-info">Registrate aquí</a></p>
+            </div> 
+            
+            <div class="col-md-6">
+                <div class="col-12">
+                <button class="btn btn-default pull-right" type="submit">Iniciar sesión</button>
+                </div>
+            </div>
+
+        </form>        
+      </div>           
+    
+    <!--FOOTER-->
+
+<footer class="container-fluid text-center">
+    <a href="#PaginaWebEcoSatreria" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <p>2021 DEV_MASTERS</p>
+</footer>
+      
+<script src="../Recursos/js/aparencia.js"></script>
+<script src="../Recursos/js/captcha.js"></script>
+<script src="../Recursos/js/funciones.js"></script>
+    
+</body>      
+</html>

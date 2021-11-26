@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
+<head>  
   <title>ECO-SASTRERIA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
-  <link href="HojaEstilo.css" rel="stylesheet" />  
+  <link href="../Recursos/css/HojaEstilo.css" rel="stylesheet" />  
   <script src="../Recursos/js/jquery.min.js"></script>
-  <script src="../Recursos/js/bootstrap.min.js"></script>
-   
+  <script src="../Recursos/js/bootstrap.min.js"></script>   
 </head>
+
 <body id="PaginaWebEcoSatreria" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -25,7 +24,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="PaginaPrincipal.html">INICIO</a></li>
+        <li><a href="../html/index.html">INICIO</a></li>
         <li><a href="#Pedidos">PEDIDOS</a></li>
        
       </ul>
@@ -39,7 +38,8 @@
   </div>
 
  <!-- PEDIDOS-->
- <div id="Cuenta" class="container-fluid bg-grey">
+
+ <div id="Pedido" class="container-fluid bg-grey">
     <h2 class="text-center">MI PEDIDO</h2>
     <form action="/Contacto/Contacto" enctype="multipart/form-data" method="post"><input name="__RequestVerificationToken" type="hidden" value="F6mSyoU6vujxpWY2BRItZrQdH4tX7pvSAS0Vv8Z72bpvHpuVdA-zoyhHWFwKygfT0V1_De_bJssXo02S0lWAZ05OqE6-xPfPiXv318MgTzM1" />        
     
@@ -135,7 +135,7 @@
     </form>     
 </div>
 
-
+<!--FOOTER-->
 
 <footer class="container-fluid text-center">
     <a href="#PaginaWebEcoSatreria" title="To Top">
@@ -144,42 +144,7 @@
     <p>2021 DEV_MASTERS</p>
 </footer>
   
-<script>
-  $(document).ready(function(){
-    // Add smooth scrolling to all links in navbar + footer link
-    $(".navbar a, footer a[href='#PaginaWebEcoSatreria']").on('click', function(event) {
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-        // Prevent default anchor click behavior
-        event.preventDefault();
-  
-        // Store hash
-        var hash = this.hash;
-  
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 900, function(){
-     
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
-    
-    $(window).scroll(function() {
-      $(".slideanim").each(function(){
-        var pos = $(this).offset().top;
-  
-        var winTop = $(window).scrollTop();
-          if (pos < winTop + 600) {
-            $(this).addClass("slide");
-          }
-      });
-    });
-  })
-</script>
+<script src="../Recursos/js/aparencia.js"></script>    
 
 </body>
 </html>

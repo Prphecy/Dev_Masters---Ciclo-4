@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
+<head>  
   <title>ECO-SASTRERIA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
-  <link href="HojaEstilo.css" rel="stylesheet" />  
+  <link href="../Recursos/css/HojaEstilo.css" rel="stylesheet" />  
   <script src="../Recursos/js/jquery.min.js"></script>
-  <script src="../Recursos/js/bootstrap.min.js"></script>
-   
+  <script src="../Recursos/js/bootstrap.min.js"></script>   
 </head>
+
 <body id="PaginaWebEcoSatreria" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -28,9 +27,9 @@
         <li><a href="#Acerca">ACERCA</a></li>
         <li><a href="#Servicios">SERVICIOS</a></li>
         <li><a href="#Portfolio">PORTFOLIO</a></li>
-        <li><a href="#Productos">PRODUCTOS</a></li>
-        <li><a href="#Cuenta">CUENTA</a></li>
+        <li><a href="#Productos">PRODUCTOS</a></li>        
         <li><a href="#Contacto">CONTACTO</a></li>
+        <li><a href="../html/Login.html">INICIO SESIÓN</a></li>
       </ul>
     </div>
   </div>
@@ -41,7 +40,7 @@
   <p>Creemos en la moda sostenible mediante la venta de vestiarios amigables con el medio ambiente, queremos entregar diseño, exclusividad y calidad sin problemas de conciencia. Somos un estilo de vida.</p> 
 </div>
 
-
+<!--ACERCA-->
 
 <div id="Acerca" class="container-fluid">
   <div class="row">
@@ -69,7 +68,7 @@
   </div>
 </div>
 
-
+<!--SERVICIOS-->
 
 <div id="Servicios" class="container-fluid text-center">
   <h2>SERVICIOS</h2>
@@ -112,7 +111,7 @@
   </div>
 </div>
 
-
+<!--PORTAFOLIO-->
 
 <div id="Portfolio" class="container-fluid text-center bg-grey">
   <h2>Portfolio</h2><br>
@@ -173,7 +172,7 @@
   </div>
 </div>
 
-
+<!--PRODUCTOS-->
 
 <div id="Productos" class="container-fluid">
   <div class="text-center">
@@ -195,8 +194,7 @@
           <p><strong>A medida</strong></p>
         </div>
         <div class="panel-footer">
-          <h3>$450.000</h3>          
-          <button class="btn btn-lg">Pedir</button>
+          <h3>$450.000</h3>
         </div>
       </div>      
     </div>     
@@ -214,8 +212,7 @@
           <p><strong>A medida</strong> </p>
         </div>
         <div class="panel-footer">
-          <h3>$450.000</h3>          
-          <button  class="btn btn-lg">Pedir</button>
+          <h3>$450.000</h3> 
         </div>
       </div>      
     </div>       
@@ -233,71 +230,14 @@
           <p><strong>A medida</strong></p>
         </div>
         <div class="panel-footer">
-          <h3>$180.000</h3>          
-          <button class="btn btn-lg">Pedir</button>
+          <h3>$180.000</h3>
         </div>
       </div>      
     </div>    
   </div>
 </div>
 
-
-
-<div id="Cuenta" class="container-fluid bg-grey">
-  <h2 class="text-center">CUENTA</h2>
-  
-  <div class="row">    
-    <div class="col-sm-6 slideanim">
-      <div class="row">    
-        <p class="lead">Iniciar sesion</p>    
-        <div class="col-sm-6 form-group">
-          <label class="control-label" for="Usuario">Usuario * </label>
-          <input class="form-control" id="Usuario" name="Usuario" placeholder="Usuario" type="text" required>
-          <span class="field-validation-valid text-danger" data-valmsg-for="Usuario" data-valmsg-replace="true"></span>
-        </div>        
-        <div class="col-sm-6 form-group">
-          <label class="control-label" for="Contraseña">Contraseña * </label>
-          <input class="form-control" id="Contraseña" name="Contraseña" placeholder="Contraseña" type="password" required>
-          <span class="field-validation-valid text-danger" data-valmsg-for="Contraseña" data-valmsg-replace="true"></span>
-        </div>
-      </div>     
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Ingresar</button>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-sm-6 slideanim">
-      <p class="lead">Registrate</p>
-      <div class="row">        
-        <div class="col-sm-6 form-group">
-          <label class="control-label" for="Usuario">Usuario * </label>
-          <input class="form-control" id="Usuario" name="Usuario" placeholder="Usuario" type="text" required>
-          <span class="field-validation-valid text-danger" data-valmsg-for="Usuario" data-valmsg-replace="true"></span>
-        </div>
-        <div class="col-sm-6 form-group">
-          <label class="control-label" for="contraseña">Contraseña * </label>
-          <input class="form-control" id="Contraseña" name="Contraseña" placeholder="Contraseña" type="password" required>
-          <span class="field-validation-valid text-danger" data-valmsg-for="Contraseña" data-valmsg-replace="true"></span>
-        </div>
-        <div class="col-sm-6 form-group">
-          <label class="control-label" for="Email">Email * </label>
-          <input class="form-control" id="Email" name="Email" placeholder="Email" type="email" required>
-          <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-        </div>
-      </div>     
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Registrarse</button>
-        </div>
-      </div>
-    </div>   
-
-  </div>
-</div>
-
-
+<!--CONTACTO-->
 
 <div id="Contacto" class="container-fluid">
   <h2 class="text-center">CONTACTO</h2>
@@ -327,7 +267,7 @@
   </div>
 </div>
 
-
+<!--FOOTER-->
 
 <footer class="container-fluid text-center">
   <a href="#PaginaWebEcoSatreria" title="To Top">
@@ -336,42 +276,7 @@
   <p>2021 DEV_MASTERS</p>
 </footer>
 
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#PaginaWebEcoSatreria']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
-})
-</script>
+<script src="../Recursos/js/aparencia.js"></script>
 
 </body>
 </html>
